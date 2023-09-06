@@ -1,0 +1,53 @@
+def add(x,y):
+        return x + y
+
+def subtract(x,y):
+        return x - y
+
+def multiply(x,y):
+        return x * y
+
+def divide(x,y):
+        return x / y
+
+def modulus(x,y):
+        return x % y
+
+def get_operator():
+        operator = input ('Enter one of the following operators: +, -, *, /, %: ') 
+        return operator
+    
+
+while True:
+
+    x = int (input ("Enter a first number: "))
+    y = int (input ("Enter a second number: "))
+
+    operator = get_operator()
+
+    if operator == '+':
+        answer = add(x,y)
+  
+    if operator == '-':
+        answer = subtract(x,y)
+
+    if operator == '*':
+        answer = multiply(x,y)
+
+    if operator == '/':
+        answer = divide(x,y)
+
+    if operator == '%':
+        answer = modulus(x,y)
+        
+    print (str(x) + ' ' + operator + ' ' + str(y) + ' = ' + str(answer))
+    
+    run_again = (input('do you want to do another calculation (yes/no)'))
+    if run_again == 'no':
+        break
+    elif run_again == 'yes':
+        continue
+            
+
+
+
