@@ -1,0 +1,19 @@
+#python fizzbuzz project
+#Alex Wichman
+
+def fizzbuzz(num):
+    for x in range(1,num+1):
+        string = ''
+
+        if x % 3 == 0:
+            string = 'fizz'
+        if x % 5 == 0:
+            string = string + 'buzz'
+        if x % 3 != 0 and x % 5 != 0:
+            string = str(x)
+            
+        print (string)
+
+num = int(input ("Enter your desired number: "))
+
+print(fizzbuzz(num))
