@@ -1,0 +1,50 @@
+//School Project
+
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
+
+int main()
+{
+    
+    std::cout << "Enter a seed number to randomise the resutls: ";
+    int seed_num{};
+    std::cin >> seed_num;
+    srand(seed_num);
+    
+    std::cout << '\n';
+    
+    int num_flips{};
+    int heads{};
+    int tails{};
+    
+    
+    std::cout << "How many flips of the coin do you want ? ";
+    std::cin >> num_flips;
+    std::cout << '\n';
+    
+    for (int i = 1; i <= num_flips; ++i)
+    {
+        int num = rand();
+        
+        if (num % 2 == 0)
+        {
+            std::cout << i << " : Heads\n";
+            ++heads;
+        }
+        else
+        {
+            std::cout << i << " : Tails\n";
+            ++tails;
+        }
+    }
+    
+    std::cout << '\n';
+    std::cout << "Total Flip count: " << num_flips << '\n';
+    std::cout << "Total Heads count: " << heads << '\n';
+    std::cout << "Total Tails count: " << tails << '\n';
+    
+    
+    
+    return 0;
+}
