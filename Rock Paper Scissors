@@ -1,0 +1,143 @@
+//School Project
+
+#include <iostream>
+#include <cstdlib>  // for rand() and srand()
+#include <ctime>
+#include <string>
+#include <stdio.h>
+
+std::string getWeapon()
+{
+    std::string weapon{};
+    unsigned int player_choice{5};
+    
+    while (player_choice > 4)
+    {
+        std::cout << "Please choose a weapon from the menu below: \n 1.> Rock \n 2.> Paper \n 3.> Scissors  \n 4.> End Game\n ";
+        std::cout << std::endl;
+        
+        std::cout << "Weapon choice: ";
+        std::cin >> player_choice;
+        
+        std::cout << std::endl;
+        
+        switch(player_choice)
+        {
+            case 1:
+                weapon = "Rock";
+                break;
+            case 2:
+                weapon = "Paper";
+                break;
+            case 3:
+                weapon = "Scissors";
+                break;
+            case 4:
+                return "end";
+            default:
+                std::cout << "Invalid menu choice, please try again\n\n";
+                std::cout << "Press the enter key once or twice to continue ..."; std::cin.ignore(); std::cin.get();
+                std::cout << '\n';
+        }
+    }
+    return weapon;
+}
+
+std::string getCompWeapon()
+{
+    srand((unsigned)time(NULL));
+
+    std::string comp_weapon{};
+    int comp_choice{rand() % 3 + 1 };
+    
+    switch(comp_choice)
+    {
+        case 1:
+            comp_weapon = "Rock";
+            break;
+        case 2:
+            comp_weapon = "Paper";
+            break;
+        case 3:
+            comp_weapon = "Scissors";
+            break;
+        case 4:
+            return "end";
+    }
+    return comp_weapon;
+}
+
+int main()
+{
+    srand((unsigned)time(NULL));
+    
+    int ties{};
+    int player_wins{};
+    int computer_wins{};
+    
+    
+    
+    bool running{true};
+    
+    while(running)
+    {
+        
+        std::string weapon = getWeapon();
+        std::string comp_weapon = getCompWeapon();
+        
+        if (weapon == "end")
+            break;
+        
+        std::cout << "player weapon is: " << weapon << "\n\n";
+        
+        std::cout << "Computer weapon is: " << getCompWeapon() << "\n\n";
+        
+        
+        
+        if ((weapon == "Paper" && comp_weapon == "Paper") || (weapon == "Rock" && comp_weapon == "Rock") || (weapon == "Scissors" && comp_weapon == "Scissors"))
+        {
+            std::cout << "Its a tie\n";
+            ++ties;
+        }
+        else if (weapon == "Rock" && comp_weapon == "Scissors")
+        {
+            std::cout << "Player Wins\n";
+            ++player_wins;
+        }
+        else if (weapon == "Scissors" && comp_weapon == "Rock")
+        {
+            std::cout << "Computer Wins\n";
+            ++computer_wins;
+        }
+        else if (weapon == "Rock" && comp_weapon == "Paper")
+        {
+            std::cout << "Computer wins\n";
+            ++computer_wins;
+        }
+        else if (weapon == "Paper" && comp_weapon == "Rock")
+        {
+            std::cout << "Player wins\n";
+            ++player_wins;
+        }
+        else if (weapon == "Paper" && comp_weapon == "Scissors")
+        {
+            std::cout << "Computer wins\n";
+            ++computer_wins;
+        }
+        else if (weapon == "Scissors" && comp_weapon == "Paper")
+        {
+            std::cout << "Plaayer wins\n";
+            ++player_wins;
+        }
+        std::cout <<'\n';
+        
+        std::cout << "Number of :\n";
+        std::cout << "Ties          :" << ties << '\n';
+        std::cout << "Player Wins   :" << player_wins << '\n';
+        std::cout << "Computer Wins :" << computer_wins << '\n';
+        
+        std::cout << "Press the enter key once or twice to continue ..."; std::cin.ignore(); std::cin.get();
+        
+    }
+    return 0;
+}
